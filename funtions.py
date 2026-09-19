@@ -16,13 +16,15 @@ def draw_grid():
         canvas.create_line(start[0], start[1], end[0], end[1], width=5, fill="black")
 
 def draw_x(x, y):
-    canvas.create_line(x - 40, y - 40, x + 40, y + 40, width=5, fill="blue")
-    canvas.create_line(x - 40, y + 40, x + 40, y - 40, width=5, fill="blue")
+    x1 = canvas.create_line(x - 40, y - 40, x + 40, y + 40, width=5, fill="blue")
+    x2 = canvas.create_line(x - 40, y + 40, x + 40, y - 40, width=5, fill="blue")
+    canvas.tag_raise(x1, x2)
 
 def draw_o(x, y):
-    canvas.create_oval(x - 40, y - 40, x + 40, y + 40, width=5, outline="orange")
+    o = canvas.create_oval(x - 40, y - 40, x + 40, y + 40, width=5, outline="orange")
+    canvas.tag_raise(o)
 
 def create_button(x, y, text, command):
-    button = tk.Button(frame, text=text, command=command)
-    button.place(x=x, y=y, width=100, height=100)
+    button = tk.Button(frame, text=text, command=command, bg="lightgreen")
+    button.place(x=x, y=y, width=90, height=90)
     return button
