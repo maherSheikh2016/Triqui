@@ -1,36 +1,33 @@
 import tkinter as tk
-from funtions import MyScreen, draw_grid, draw_x, draw_o, create_button
+from funtions import MyScreen, draw_grid, draw_x, draw_o, create_button, win_check
 turn = "X"
-save = {
-    "x1" = None
-    "y1" = None
-    "x2" = None
-    "y2" = None
-    "x3" = None
-    "y3" = None
-    "x4" = None
-    "y4" = None
-    "x5" = None
-}
+board =[
+    [None, None, None],
+    [None, None, None],
+    [None, None, None]
+]
 def button_command(x, y, row, column):
     global turn
     if turn == "X":
         draw_x(x, y)
-        for key, value in items(save)  and key == "o" + w:
-            if save[key] == None:
-                save[key] = (row, column)
-                break
-
-        turn = "O"
+        for x in range(3):
+            for y in range(3):
+                if board[x][y] == None and (x, y) == (row, column):
+                    board[x][y] = "x"
+                    turn = "O"
+                    win_check(board)
+                    break
     else:
         draw_o(x, y)
-        for key, value, w in items(save):
-            if save[key] == None and key == "o" + w:
-                save[key] = (row, column)
-                break
-        turn = "X"
+        for x in range(3):
+                    for y in range(3):
+                        if board[x][y] == None and (x, y) == (row, column):
+                            board[x][y] = "o"
+                            turn = "X"
+                            win_check(board)
+                            break
 def Myc(name, row, column, x, y):
-    button_command(x, y, row, coulumn)
+    button_command(x, y, row, column)
     name.destroy()
     
 

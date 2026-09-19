@@ -1,5 +1,5 @@
 import tkinter as tk
-
+from tkinter import messagebox
 MyScreen = tk.Tk()
 MyScreen.geometry("400x400")
 MyScreen.title("Tic-tac-toe")
@@ -28,3 +28,28 @@ def create_button(x, y, text, command):
     button = tk.Button(frame, text=text, command=command, bg="lightgreen")
     button.place(x=x, y=y, width=90, height=90)
     return button
+
+def win_check(board):
+    for i in range(3):
+        if board[0][i] == "x" and board[1][i] == "x" and board[2][i] == "x":
+            messagebox.showinfo("Game Over", "Player X wins!")
+            break
+    for j in range(3):
+            if board[j][0] == "x" and board[j][1] == "x" and board[j][2] == "x":
+                messagebox.showinfo("Game Over", "Player X wins!")
+                break
+
+    if board[0][0] == "x" and board[1][1] == "x" and board[2][2] == "x":
+        messagebox.showinfo("Game Over", "Player X wins!")
+
+    for w in range(3):
+        if board[0][w] == "o" and board[1][w] == "o" and board[2][w] == "o":
+            messagebox.showinfo("Game Over", "Player O wins!")
+            break
+    for x in range(3):
+            if board[x][0] == "o" and board[x][1] == "o" and board[x][2] == "o":
+                messagebox.showinfo("Game Over", "Player O wins!")
+                break
+
+    if board[0][0] == "o" and board[1][1] == "o" and board[2][2] == "o":
+        messagebox.showinfo("Game Over", "Player O wins!")
